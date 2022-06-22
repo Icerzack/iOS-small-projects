@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XIf-ac-zDP">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="zkl-oF-Qsh">
+            <objects>
+                <viewController id="U8O-Lc-tgz" customClass="ViewController" customModule="Recipes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PEv-BI-uX6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7un-Z7-qnR">
+                                <rect key="frame" x="0.0" y="98" width="414" height="764"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WLp-it-icj">
+                                    <size key="itemSize" width="177" height="203"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <imageView key="backgroundView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="zTN-zc-ZXe">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="764"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="RecipeCell" id="5p3-sY-giX" customClass="RecipeCell" customModule="Recipes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="170" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mCU-wX-sjt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="128" id="S3e-76-ovZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mxr-yA-zez">
+                                                    <rect key="frame" x="64" y="148" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="mCU-wX-sjt" firstAttribute="leading" secondItem="5p3-sY-giX" secondAttribute="leading" id="3tl-oZ-pfq"/>
+                                            <constraint firstAttribute="trailing" secondItem="mCU-wX-sjt" secondAttribute="trailing" id="4gI-QI-fPw"/>
+                                            <constraint firstItem="Mxr-yA-zez" firstAttribute="centerX" secondItem="5p3-sY-giX" secondAttribute="centerX" id="jPG-df-qQq"/>
+                                            <constraint firstItem="Mxr-yA-zez" firstAttribute="top" secondItem="mCU-wX-sjt" secondAttribute="bottom" constant="20" id="tTc-zz-6X0"/>
+                                            <constraint firstItem="mCU-wX-sjt" firstAttribute="top" secondItem="5p3-sY-giX" secondAttribute="top" id="vKb-8f-4aO"/>
+                                        </constraints>
+                                        <size key="customSize" width="170" height="200"/>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="Mxr-yA-zez" id="VuN-7A-n0r"/>
+                                            <outlet property="recipeImage" destination="mCU-wX-sjt" id="BjC-rj-pxW"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="U8O-Lc-tgz" id="mX0-8E-nyu"/>
+                                    <outlet property="delegate" destination="U8O-Lc-tgz" id="qHB-5v-QO2"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="haD-PD-eoX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7un-Z7-qnR" firstAttribute="bottom" secondItem="haD-PD-eoX" secondAttribute="bottom" id="9Ah-Tr-mke"/>
+                            <constraint firstItem="7un-Z7-qnR" firstAttribute="leading" secondItem="haD-PD-eoX" secondAttribute="leading" id="A0a-d7-ixJ"/>
+                            <constraint firstItem="7un-Z7-qnR" firstAttribute="top" secondItem="haD-PD-eoX" secondAttribute="top" constant="10" id="CQh-9h-iLG"/>
+                            <constraint firstItem="haD-PD-eoX" firstAttribute="trailing" secondItem="7un-Z7-qnR" secondAttribute="trailing" id="Q4i-BI-Ptl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ons-WO-gcV">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="7nl-Lz-9hJ"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vWA-C5-sql" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1842.0289855072465" y="-10.044642857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="F9A-TA-xhD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XIf-ac-zDP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vFM-ui-5LT">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="U8O-Lc-tgz" kind="relationship" relationship="rootViewController" id="e3b-zD-FOo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5hS-D6-J0U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="931.88405797101461" y="-10.044642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="600" height="1154"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
