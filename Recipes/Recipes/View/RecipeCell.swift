@@ -11,5 +11,6 @@ class RecipeCell: UICollectionViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var recipeImage: UIImageView!
+    @IBOutlet var descriptionLabel: UILabel!
     
 }
