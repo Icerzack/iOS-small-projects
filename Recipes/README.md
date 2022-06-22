@@ -4,4 +4,5 @@
 - Realm
 - MVC pattern
 - UIImagePicker
+
 !!! Для запуска необходимо установить Realm с помощью CocoaPods !!!
