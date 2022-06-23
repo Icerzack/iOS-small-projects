@@ -17,7 +17,7 @@ class RecipesListViewController: UIViewController {
         bottom: 50.0,
         right: 20.0)
     
-    private let itemsPerRow: CGFloat = 3
+    private let itemsPerRow: CGFloat = 2
     
     private var recipeToModify: Recipe!
     
@@ -39,12 +39,11 @@ class RecipesListViewController: UIViewController {
         setupRightBarButtonItem(title: "Add")
     }
     
-}
-
-// MARK: UINavigationBar setup
-
-extension RecipesListViewController{
+    override func viewDidAppear(_ animated: Bool) {
+        navigationItem.title = "Мои рецепты"
+    }
     
+// MARK: UINavigationBar setup
     private func setupRightBarButtonItem(title: String){
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(performAddAction))
         navigationItem.rightBarButtonItem?.title = title
@@ -57,57 +56,13 @@ extension RecipesListViewController{
             self.realmDbInstance.writeData(recipeToWrite: recipe)
             self.recipes.append(recipe)
         }
+        vc?.barTitle = "Создать новый рецепт"
         self.navigationController?.pushViewController(vc!, animated: true)
     }
+
+    
 }
 
-// MARK: Gesture recognition setup
-//extension RecipesListViewController: UIGestureRecognizerDelegate, UIContextMenuInteractionDelegate{
-//
-//    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-//
-//        let modify = UIAction(title: "Изменить", image: UIImage(systemName: "pencil")) { action in
-//            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EditRecipeViewController") as? EditRecipeViewController
-//            vc?.isEditingMode = true
-//            vc?.recipe = self.recipeToModify.1
-//            vc?.doAfterFinish = { recipe in
-//                self.realmDbInstance.modifyData(recipeToModify: self.recipeToModify.1, newRecipe: recipe)
-//                self.recipes[self.recipeToModify.0] = recipe
-//            }
-//            self.navigationController?.pushViewController(vc!, animated: true)
-//        }
-//
-//        let delete = UIAction(title: "Удалить", image: UIImage(systemName: "trash.fill"), attributes: [.destructive]) { action in
-//
-//        }
-//
-//        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-//            UIMenu(title: "", children: [modify, delete])
-//        }
-//    }
-//
-//    private func setupLongPressGestureRecognizer(){
-//        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler))
-//        self.view.addGestureRecognizer(longPressRecognizer)
-//    }
-//
-//    @objc private func longPressHandler(gestureRecognizer : UILongPressGestureRecognizer){
-//        if (gestureRecognizer.state != UIGestureRecognizer.State.ended){
-//            let p = gestureRecognizer.location(in: self.collectionView)
-//
-//            if let indexPath = self.collectionView.indexPathForItem(at: p) {
-//                let cell = self.collectionView.cellForItem(at: indexPath)
-//                let interaction = UIContextMenuInteraction(delegate: self)
-//                recipeToModify = (indexPath.item, recipes[indexPath.item])
-//                print(recipeToModify)
-//                cell?.addInteraction(interaction)
-//            } else {
-//                print("couldn't find index path")
-//            }
-//        }
-//
-//    }
-//}
 
 // MARK: UICollectionView and ContextualMenu setup
 
@@ -123,6 +78,7 @@ extension RecipesListViewController: UICollectionViewDelegate, UICollectionViewD
         recipeToModify = recipes[index]
         vc?.isEditingMode = true
         vc?.recipe = recipeToModify
+        vc?.barTitle = recipeToModify.name
         vc?.doAfterFinish = { [self] recipe in
             realmDbInstance.modifyData(recipeToModify: recipeToModify, newRecipe: recipe)
             recipes[index] = recipe

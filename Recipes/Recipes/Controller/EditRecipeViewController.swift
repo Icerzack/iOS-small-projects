@@ -19,13 +19,14 @@ class EditRecipeViewController: UITableViewController {
     private let defaultImage = UIImage(imageLiteralResourceName: "default")
     
     var isEditingMode: Bool = false
+    var barTitle: String = ""
     
     var doAfterFinish: ((Recipe) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Добавить рецепт"
+        self.navigationItem.title = barTitle
         
         if(isEditingMode){
             nameField.text = recipe.name

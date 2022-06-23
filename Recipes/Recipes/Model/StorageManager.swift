@@ -47,6 +47,7 @@ class RealmStorageManager: StorageManagerProtocol{
             recipeToModify.name = newRecipe.name
             recipeToModify.desc = newRecipe.desc
             recipeToModify.cookingMethod = newRecipe.cookingMethod
+            recipeToModify.image = newRecipe.image
         }
     }
     
